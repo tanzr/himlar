@@ -208,7 +208,8 @@ profile::network::services::dns_records:
     "db02.%{hiera('domain_trp')}":                          "%{hiera('netcfg_trp_netpart')}.42"
     "volume.%{hiera('domain_trp')}":                        "%{hiera('netcfg_trp_netpart')}.46"
     "compute.%{hiera('domain_trp')}":                       "%{hiera('netcfg_trp_netpart')}.66"
-    "network.%{hiera('domain_trp')}":                       "%{hiera('netcfg_trp_netpart')}.71"
+    "network01.%{hiera('domain_trp')}":                     "%{hiera('netcfg_trp_netpart')}.71"
+    "network02.%{hiera('domain_trp')}":                     "%{hiera('netcfg_trp_netpart')}.72"
     "identity.%{hiera('domain_trp')}":                      "%{hiera('netcfg_trp_netpart')}.81"
 
 #
