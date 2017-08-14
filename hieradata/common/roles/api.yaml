@@ -98,8 +98,8 @@ profile::highavailability::loadbalancing::haproxy::haproxy_balancermembers:
     options:            'check'
   network:
     listening_service:  'network'
-    server_names:       ['network-01']
-    ipaddresses:        ["network.%{hiera('domain_trp')}"]
+    server_names:       ['network01', 'network02']
+    ipaddresses:        ["network01.%{hiera('domain_trp')}", "network02.%{hiera('domain_trp')}"]
     ports:              '9696'
     options:            'check'
   status:
