@@ -80,6 +80,15 @@ keystone::policy::policies:
   identity:list_domains:
     key:    'identity:list_domains'
     value:  'rule:admin_required or role:admin_view'
+  identity:get_user:
+    key:    'identity:get_user'
+    value:  'rule:admin_required or role:system-reader'
+  identity:list_users:
+    key:    'identity:list_users'
+    value:  'rule:admin_required or role:system-reader'
+  identity:list_domains:
+    key:    'identity:list_domains'
+    value:  'rule:admin_required or role:system-reader'
   # enable application_credential for admin only
   identity:get_application_credential:
     key:    'identity:get_application_credential'

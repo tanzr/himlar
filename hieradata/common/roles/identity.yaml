@@ -33,6 +33,7 @@ profile::openstack::identity::roles_extra:
   - admin_view
   - object
   - imagebuilder
+  - system-reader
 
 profile::openstack::identity::keystone_config:
   'DEFAULT/max_project_tree_depth':
@@ -127,6 +128,8 @@ profile::openstack::resource::users::user_roles:
     roles:    'admin'
   "access@%{hiera('keystone__service__project')}":
     roles:    'admin_view'
+  "access@%{hiera('keystone__service__project')}":
+    roles:    ' system-reader'
 
 # Sensu
 profile::webserver::apache::status::manage_status: true
