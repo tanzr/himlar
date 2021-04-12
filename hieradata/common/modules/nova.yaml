@@ -84,6 +84,8 @@ nova::keystone::authtoken::project_domain_name:     "%{hiera('keystone__default_
 nova::keystone::authtoken::user_domain_name:        "%{hiera('keystone__default__domain')}"
 nova::keystone::authtoken::project_name:            "%{hiera('keystone__service__project')}"
 nova::keystone::authtoken::memcached_servers:       '127.0.0.1:11211'
+cinder::keystone::authtoken::service_token_roles:   'admin'
+cinder::keystone::authtoken::service_token_roles_required: true
 
 # scheduler (node: novactrl)
 nova::cpu_allocation_ratio:                         '16'
@@ -111,7 +113,7 @@ nova::scheduler::filter::scheduler_default_filters:
 nova::conductor::enabled: true
 
 # consoleauth (node: novactrl)
-nova::consoleauth::enabled: true
+nova::consoleauth::enabled: true #deprecated
 
 # availability zone in nova.conf (node: compute and novactrl)
 nova::availability_zone::default_availability_zone:           "%{::location}-iaas-team-only-1"
