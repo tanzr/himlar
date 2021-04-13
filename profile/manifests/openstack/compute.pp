@@ -6,9 +6,10 @@ class profile::openstack::compute(
 ) {
   include ::nova
   include ::nova::config
-  include ::nova::placement
+#  include ::nova::placement
   include ::nova::network::neutron
   include ::nova::logging
+  include ::placement
 
   if $manage_telemetry {
     include ::profile::openstack::telemetry::polling
