@@ -30,10 +30,10 @@ class profile::openstack::novactrl(
   include ::nova
   include ::nova::api
   include ::nova::config
-  include ::nova::placement
+#  include ::nova::placement
   include ::nova::network::neutron
-  include ::nova::wsgi::apache_api
-  include ::nova::wsgi::apache_placement
+#  include ::nova::wsgi::apache_api
+#  include ::nova::wsgi::apache_placement
   include ::nova::logging
 
   # This will make sure httpd service will be restarted on config changes
