@@ -34,11 +34,11 @@ class profile::openstack::database::sql (
     include ::glance::db::mysql
   }
 
-  if $nova_enabled {
-    include ::nova::db::mysql
-    include ::nova::db::mysql_api
-    include ::nova::db::mysql_placement
-  }
+#  if $nova_enabled {
+#    include ::nova::db::mysql
+#    include ::nova::db::mysql_api
+#    include ::nova::db::mysql_placement
+#  }
 
   if $cinder_enabled {
     include ::cinder::db::mysql

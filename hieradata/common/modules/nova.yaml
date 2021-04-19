@@ -50,7 +50,7 @@ nova::keystone::auth::internal_url:     "%{hiera('endpoint__compute__internal')}
 
 # placement wsgi
 #nova::wsgi::apache_placement::ssl:        false
-#nova::wsgi::apache_placement::api_port:   8778
+#nova::wsgi::apache_placement::api_port:   80
 #nova::wsgi::apache_placement::bind_host:  "%{ipaddress_trp1}"
 #nova::wsgi::apache_placement::threads:    1
 #nova::wsgi::apache_placement::workers:    4

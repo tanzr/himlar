@@ -38,8 +38,8 @@ profile::base::network::manage_dummy:                               true
 profile::highavailability::loadbalancing::haproxy::manage_haproxy:  true
 profile::highavailability::loadbalancing::haproxy::manage_firewall: true
 profile::highavailability::loadbalancing::haproxy::firewall_ports:
-  public:    ['80', '443', '5000', '8041', '8774', '8776', '9292', '9696', '6080', '8080', '8778', '9001']
-  internal:  ['5000', '8041', '8774', '8776', '9292', '9696', '35357', '8080', '8778', '9001']
+  public:    ['80', '443', '5000', '8041', '8774', '8776', '9292', '9696', '6080', '8080', '80', '9001']
+  internal:  ['5000', '8041', '8774', '8776', '9292', '9696', '35357', '8080', '80', '9001']
   mgmt:      ['9000']
   limited:   []
 
@@ -82,7 +82,7 @@ profile::highavailability::loadbalancing::haproxy::haproxy_mapfile:
       - "network.api.%{hiera('domain_public')}:9696":       'bk_network'
       - "metric.api.%{hiera('domain_public')}:8041":        'bk_metric'
       - "compute.api.%{hiera('domain_public')}:8774":       'bk_compute'
-      - "placement.api.%{hiera('domain_public')}:8778":     'bk_placement'
+      - "placement.api.%{hiera('domain_public')}:80":     'bk_placement'
       - "volume.api.%{hiera('domain_public')}:8776":        'bk_volume'
       - "image.api.%{hiera('domain_public')}:9292":         'bk_image'
       - "object.api.%{hiera('domain_public')}:8080":        'bk_object'
@@ -99,7 +99,7 @@ profile::highavailability::loadbalancing::haproxy::haproxy_mapfile:
       - "network.api.%{hiera('domain_public2')}:9696":      'bk_network'
       - "metric.api.%{hiera('domain_public2')}:8041":       'bk_metric'
       - "compute.api.%{hiera('domain_public2')}:8774":      'bk_compute'
-      - "placement.api.%{hiera('domain_public2')}:8778":    'bk_placement'
+      - "placement.api.%{hiera('domain_public2')}:80":    'bk_placement'
       - "volume.api.%{hiera('domain_public2')}:8776":       'bk_volume'
       - "image.api.%{hiera('domain_public2')}:9292":        'bk_image'
       - "object.api.%{hiera('domain_public2')}:8080":       'bk_object'
@@ -121,7 +121,7 @@ profile::highavailability::loadbalancing::haproxy::haproxy_mapfile:
       - "network.%{hiera('domain_trp')}:9696":          'bk_network'
       - "metric.%{hiera('domain_trp')}:8041":           'bk_metric'
       - "compute.%{hiera('domain_trp')}:8774":          'bk_compute'
-      - "placement.%{hiera('domain_trp')}:8778":        'bk_placement'
+      - "placement.%{hiera('domain_trp')}:80":        'bk_placement'
       - "volume.%{hiera('domain_trp')}:8776":           'bk_volume'
       - "image.%{hiera('domain_trp')}:9292":            'bk_image'
       - "dns.%{hiera('domain_trp')}:9001":              'bk_dns'
@@ -134,7 +134,7 @@ profile::highavailability::loadbalancing::haproxy::haproxy_frontends:
       "%{::ipaddress_public1}:5000":  ['ssl', 'crt', "%{hiera('star_api_ssl_pem')}", 'crt', "%{hiera('star_api_ssl_pem2')}", 'crt', "%{hiera('frontend_star_ssl_pem')}", 'crt', "%{hiera('frontend_star_ssl_pem2')}"]
       "%{::ipaddress_public1}:8041":  ['ssl', 'crt', "%{hiera('star_api_ssl_pem')}", 'crt', "%{hiera('star_api_ssl_pem2')}"]
       "%{::ipaddress_public1}:8080":  ['ssl', 'crt', "%{hiera('star_api_ssl_pem')}", 'crt', "%{hiera('star_api_ssl_pem2')}"]
-      "%{::ipaddress_public1}:8778":  ['ssl', 'crt', "%{hiera('star_api_ssl_pem')}", 'crt', "%{hiera('star_api_ssl_pem2')}"]
+      "%{::ipaddress_public1}:80":  ['ssl', 'crt', "%{hiera('star_api_ssl_pem')}", 'crt', "%{hiera('star_api_ssl_pem2')}"]
       "%{::ipaddress_public1}:8774":  ['ssl', 'crt', "%{hiera('star_api_ssl_pem')}", 'crt', "%{hiera('star_api_ssl_pem2')}"]
       "%{::ipaddress_public1}:8776":  ['ssl', 'crt', "%{hiera('star_api_ssl_pem')}", 'crt', "%{hiera('star_api_ssl_pem2')}"]
       "%{::ipaddress_public1}:9292":  ['ssl', 'crt', "%{hiera('star_api_ssl_pem')}", 'crt', "%{hiera('star_api_ssl_pem2')}"]
@@ -184,7 +184,7 @@ profile::highavailability::loadbalancing::haproxy::haproxy_frontends:
       "%{::ipaddress_trp1}:9696":  [] # neutron
       "%{::ipaddress_trp1}:8080":  [] # object
       "%{::ipaddress_trp1}:9001":  [] # designate
-      "%{::ipaddress_trp1}:8778":  [] # placement
+      "%{::ipaddress_trp1}:80":  [] # placement
     options:
       - capture:        'request header Host len 64' #for debug
       - use_backend:    '%[req.hdr(host),lower,map(/etc/haproxy/internal_domains.map)]'
@@ -329,7 +329,7 @@ profile::highavailability::loadbalancing::haproxy::haproxy_balancermembers:
     listening_service:  'bk_placement'
     server_names:       "%{alias('compute__backend__names')}"
     ipaddresses:        "%{alias('compute__backend__ips')}"
-    ports:              '8778'
+    ports:              '80'
     options:            'check'
   volume:
     listening_service:  'bk_volume'
@@ -417,7 +417,7 @@ profile::base::selinux::ports:
   placement-http:
     seltype:  'http_port_t'
     protocol: 'tcp'
-    port:     8778
+    port:     80
   console-http:
     seltype:  'http_port_t'
     protocol: 'tcp'

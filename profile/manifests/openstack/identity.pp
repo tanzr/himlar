@@ -89,10 +89,10 @@ class profile::openstack::identity (
     include ::ceilometer::keystone::auth
   }
 
-  if $nova_enabled {
-    include ::nova::keystone::auth
-    include ::nova::keystone::auth_placement
-  }
+#  if $nova_enabled {
+#    include ::nova::keystone::auth
+#    include ::nova::keystone::auth_placement
+#  }
 
   if $neutron_enabled {
     include ::neutron::keystone::auth
