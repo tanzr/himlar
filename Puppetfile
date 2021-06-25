@@ -155,11 +155,10 @@ mod 'archive', :ref => 'v2.2.0',                    :git => github + 'voxpupuli/
 #
 # profile::openstack::*
 #
-<<<<<<< HEAD
 mod 'glance', :ref => '15.4.0',                     :git => github + 'openstack/puppet-glance'
 mod 'cinder', :ref => 'ad4f1d88bb',                 :git => github + 'norcams/puppet-cinder'
 mod 'neutron', :ref => '15.4.0',                    :git => github + 'openstack/puppet-neutron'
-mod 'nova', :ref => '14.4.0',                       :git => github + 'openstack/puppet-nova'
+mod 'nova', :ref => '15.4.0',                       :git => github + 'openstack/puppet-nova'
 mod 'horizon', :ref => '15.4.0',                    :git => github + 'openstack/puppet-horizon'
 mod 'gnocchi', :ref => '14.4.0',                    :git => github + 'openstack/puppet-gnocchi'
 mod 'keystone', :ref => '15.5.0',                   :git => github + 'openstack/puppet-keystone'
@@ -167,7 +166,7 @@ mod 'swift', :ref => 'norcams/ocata',               :git => github + 'norcams/pu
 mod 'ceilometer', :ref => '14.4.0',                 :git => github + 'openstack/puppet-ceilometer'
 mod 'designate', :ref => '14.4.0',                  :git => github + 'openstack/puppet-designate'
 mod 'cloudkitty', :ref => '3.4.0',                  :git => github + 'openstack/puppet-cloudkitty'
-mod 'placement', :ref => '1.2.0',                   :git => github + 'openstack/puppet-placement'
+mod 'placement', :ref => '2.5.0',                   :git => github + 'openstack/puppet-placement'
 
 mod 'oslo', :ref => '15.4.0',                       :git => github + 'openstack/puppet-oslo'
 mod 'openstacklib', :ref => 'stable/train',         :git => github + 'openstack/puppet-openstacklib'
@@ -209,7 +208,11 @@ mod 'subscription_manager', :ref => '5.5.0',        :git => github + 'waveclaw/p
 #
 # Common libs
 #
+<<<<<<< HEAD
 mod 'stdlib', :ref => '5.2.0',                      :git => github + 'puppetlabs/puppetlabs-stdlib'
+=======
+mod 'stdlib', :ref => '5.2.0',                     :git => github + 'puppetlabs/puppetlabs-stdlib'
+>>>>>>> train/nova
 mod 'translate', :ref => '1.2.0',                   :git => github + 'puppetlabs/puppetlabs-translate'
 mod 'concat', :ref => '4.1.0',                      :git => github + 'puppetlabs/puppetlabs-concat'
 mod 'hash_file', :ref => '1.0.3',                   :git => github + 'fiddyspence/puppet-hash_file' # ??
