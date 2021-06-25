@@ -168,7 +168,7 @@ mod 'designate', :ref => '14.4.0',                  :git => github + 'openstack/
 mod 'cloudkitty', :ref => '3.4.0',                  :git => github + 'openstack/puppet-cloudkitty'
 mod 'placement', :ref => '2.5.0',                   :git => github + 'openstack/puppet-placement'
 
-mod 'oslo', :ref => '15.4.0',                       :git => github + 'openstack/puppet-oslo'
+mod 'oslo', :ref => 'stable/train',                 :git => github + 'openstack/puppet-oslo'
 mod 'openstacklib', :ref => 'stable/train',         :git => github + 'openstack/puppet-openstacklib'
 mod 'openstack_extras', :ref => '15.4.0',           :git => github + 'openstack/puppet-openstack_extras'
 mod 'sysctl', :ref => 'v0.0.11',                    :git => github + 'duritong/puppet-sysctl'
